@@ -1,29 +1,36 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
 
 function ItemCount({stock, initial, onAdd}){
-    const [valor, setValor]= useState(0);
-
-return <div> <button onClick= {()=> {
-    if(valor<stock){
-    setValor( valor + 1)
-    }
-}} style= {{margin: "5px"}}> + </button>
-
-{valor}
-
-<button onClick= {()=> {
-    if(valor> 0 && valor<=stock){
-    setValor( valor - 1)
-    }
-}} style= {{margin: "5px"}} > - </button> 
-
-<div> <button onClick={onAdd} style= {{width: "120px", height:"20px", margin: "5px" }}> Agregar </button> </div>
+    
+    const[cant, setCant] = useState(0);
+     const increment = ()=>{
+        
+        if(cant<stock){
+         setCant(cant+1);
 
 
-
-</div>
-
+        }
+    };
+    
+    const decrement = ()=>{
+        if(cant)
+        setCant(cant-1);
+       
+    };
+    return (
+        <div className ="app">
+            <button onClick={increment}>AGREGAR</button>
+            <h1>{cant}</h1>
+        
+        
+        <button onClick={decrement}>QUITAR</button>
+        
+    </div>
+    );
 
 }
+
+
+
 
 export default ItemCount;
