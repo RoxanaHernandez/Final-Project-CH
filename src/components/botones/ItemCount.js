@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 
+
 function ItemCount({stock, initial, onAdd}){
     
     const[cant, setCant] = useState(0);
@@ -10,6 +11,9 @@ function ItemCount({stock, initial, onAdd}){
 
 
         }
+        function onAdd (){
+            console.log(cant);
+        };
     };
     
     const decrement = ()=>{
@@ -17,6 +21,7 @@ function ItemCount({stock, initial, onAdd}){
         setCant(cant-1);
        
     };
+   
     return (
         <div className ="app">
             <button onClick={increment}>AGREGAR</button>

@@ -13,7 +13,7 @@ function App() {
       <Home greeting="Welcome to React">Coders</Home>
       <Home greeting="Bienvenidos a React"></Home>
       <ItemListContainer title="My E-Commerce"></ItemListContainer>
-      <ItemCount stock={4} initial={0}/>
+      <ItemCount stock={4} initial={0} onAdd={console.log()}/>
       
     </div>
   );
