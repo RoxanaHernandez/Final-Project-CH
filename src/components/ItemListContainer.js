@@ -1,31 +1,36 @@
 import React, {useState, useEffect} from 'react';
 
+const APP_ID = "70b628bb";
+const APP_KEY = "ab14b1e3a39cab6e3a62dc961e36f0fd";
 
+
+const getRecipes = async (strBusqueda)=> {
+  const response = await fetch(`https://api.edamam.com/search?q=${strBusqueda}&app_id=${APP_ID}&app_key=${APP_KEY}`)
+  const data =  await response.json();
+  return data
+}
 
 
 
 function ItemListContainer(){
-  const APP_ID = "70b628bb";
-  const APP_KEY = " 976a3af59448c1e21bef96e5ec4ce09b";
   const [recipes, setRecipes]= useState([]);
-  
-  useEffect(()=>{
-    getRecipes();
-  },[]);
-  const getRecipes = async ()=> {
-    const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`)
-    const data =  await response.json();
-    setRecipes(data.hits);
-  }
+  const [busqueda, setBusqueda] = useState('');
+
 
 
 return (
   <div className = 'tiendita'>
-    <form className = 'search-form'>
-      <input classsName ='search-bar' type='text'/>
-      <button className = 'search-button' type = 'submit'>SEARCH</button>
-    </form>
+      <input className ='search-bar' type='text' value={busqueda} onChange={(evt)=>{
+        setBusqueda(evt.target.value)
+      }}/>
+      <button className = 'search-button' onClick={async () =>{
+        const data = await getRecipes(busqueda);
+        setRecipes(data.hits);
+      }}>SEARCH</button>
 
+      <div>
+        {recipes.map((recipe) => <div>{recipe.recipe.label}</div>)}
+      </div>
   </div>
 )
 };
