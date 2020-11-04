@@ -16,12 +16,12 @@ function App() { return (
     
     <Switch>
     <Route path="/CartWidget" exact component={CartWidget}/>
-   
+    </Switch>
     <ItemListContainer title= "PRODUCTS"/>
     <ItemCount stock={4} initial={0} onAdd={console.log()}/>
 
     
-    </Switch>
+    
   </div>
   </Router>
 );
