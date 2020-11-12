@@ -22,10 +22,13 @@ display:'flex', flexDirection:'row', justifyContent: 'space-around',
               
                 
 
-                <Link to="/home">
+                <Link to="/">
                 <li style={{display:'inline', marginRight:20}}>HOME</li>
                 </Link>
 
+                <Link to="/list">
+                <li style={{display:'inline', marginRight:20}}>LISTADO</li>
+                </Link>
                 <Link to="/about">
                 <li style={{display:'inline', marginRight:20}}>ABOUT US</li>
                 </Link>
