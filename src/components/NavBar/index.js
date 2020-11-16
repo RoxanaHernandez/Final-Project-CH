@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 
 
 function NavBar(){
+    const cart = useCartContext();
     return <div>
      
         <div style ={{width : '100%' , height :'100px', background: 'rgb(245,236,188)',
