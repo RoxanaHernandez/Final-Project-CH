@@ -7,11 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Home from './components/Home';
-import {CartContext} from './context/CartContext';
+import CartProvider, {CartContext} from './context/CartContext';
 
 function App() {
   return (
-    <CartContext.Provider value ={[]}>
+    <CartProvider defaultCart={[]}>
     <Router>
       <div className="App">
         <NavBar />
@@ -27,7 +27,7 @@ function App() {
 
       </div>
     </Router>
-    </CartContext.Provider>
+    </CartProvider>
   );
 }
 
