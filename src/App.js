@@ -11,7 +11,8 @@ import CartProvider, {CartContext} from './context/CartContext';
 
 function App() {
   return (
-    <CartProvider defaultCart={[]}>
+    //en esta linea sacamos el defaulrt y lo ponemos en nel CartContext
+    <CartProvider /*defaultCart={[]}*/>  
     <Router>
       <div className="App">
         <NavBar />
