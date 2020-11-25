@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
+import React from 'react';
 import ItemCount from './Botones/ItemCount'
 import {useCartContext} from '././../context/CartContext'
 
@@ -8,7 +8,8 @@ export default function ItemDetail ( {item} ) {
     const {cart, add, remove} =  useCartContext()
     return <div>
 
-        <h4> {item.title} </h4>
+        <h3> {item.title} </h3>
+        <p> {item.category}</p>
         <p> {item.description} </p>
         <p> {item.price} </p>
         <img src={item.img}/>

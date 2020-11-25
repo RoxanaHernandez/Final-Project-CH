@@ -1,19 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import ItemList from './ItemList'
-import itemsFijos from './itemFijos'
 
-const APP_ID = "70b628bb"; 
-const APP_KEY = "ab14b1e3a39cab6e3a62dc961e36f0fd";
+import {getFirestore} from '../firebase/indexfb';
 
 
 
-
-const fetchItems = () => new Promise((resolve, reject) => {
-  return setTimeout(() => {
-    return resolve(itemsFijos)
-  }, 2000)
+const fetchItems = () => {
+  const db = getFirestore();
+  const itemCollection = db.collection('equipos');
+  const res = itemCollection.get()
+  return res.then((querySnapshot) => {
+    if(querySnapshot.size === 0){
+    return [];
+  
+   }
+     return querySnapshot.docs.map(doc=>doc.data())
 })
-
+};
 
 function ItemListContainer(){
   const [ items, setItems ] = useState([])
@@ -29,4 +32,4 @@ return (
 )
 };
 
-export default ItemListContainer;
+export  default ItemListContainer;
