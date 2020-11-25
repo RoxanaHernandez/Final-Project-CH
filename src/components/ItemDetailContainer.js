@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import{useParams} from 'react-router-dom';
 import ItemDetail from './ItemDetail';
-import Item from './Item';
+
+import { getFirestore } from '../firebase/indexfb';
 
 
 
@@ -12,14 +13,17 @@ import Item from './Item';
     
   //}, 2000)
 //})
-const getItemDetail =(id)=> {
-  return new Promise((res, rej)=>{
-    setTimeout(() => {
-      res(Item[id]); 
-      
-    },2000);
+
+const getItemDetail = (id) => {
+  const db = getFirestore();
+  const itemCollection = db.collection('equipos');
+  const res = itemCollection.doc(id).get()
+  return res.then((doc) => {
+    return doc.data()
   })
-}
+};
+
+
 
 
 function ItemDetailContainer(){
