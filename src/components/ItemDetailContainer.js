@@ -19,7 +19,9 @@ const getItemDetail = (id) => {
   const itemCollection = db.collection('equipos');
   const res = itemCollection.doc(id).get()
   return res.then((doc) => {
-    return doc.data()
+    const data = doc.data();
+    data.id = doc.id
+    return data
   })
 };
 
@@ -42,7 +44,10 @@ function ItemDetailContainer(){
 
 return (
   <div className = 'tiendita'>
-      <ItemDetail item={item}></ItemDetail>
+      {item.id ? (
+        <ItemDetail item={item}></ItemDetail>
+
+      ): 'loading'}
   </div>
 )
 };

@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Cart from './Cart'
 
 function Item({ id, title, price, image }) {
-    return <Link to={`/item/${id}`}>
-        <h3>{title}</h3>
-        <h4>$ {price}</h4>
-        <h3>/images/{image}</h3>
-        <img src={`/images/${image}`} />
+    return <Link to={`/item/${id}`}><br/>
+        <h3>{title}</h3><br/>
+        <h4>$ {price}</h4><br/>
+        
+        <img style ={{width:'696px' , height: '549px'}} src={`/images/${image}`} /><br/><br/>
+
+        
     </Link>
+
 }
 
 export default Item;

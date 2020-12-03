@@ -10,10 +10,10 @@ export default function CartProvider({ children, defaultCart = [] }) {//[array d
     const [cart, setCart] = useState(defaultCart);
     //nuestro almace3n de compras//
 
-    function add(item) {
-        const itemFound = cart.find((it) => it.id === item.id);// busca para ver si existe 
+    function add(itemWrapper) {
+        const itemFound = cart.find((iw) => iw.item.id === itemWrapper.item.id);// busca para ver si existe 
         if (!itemFound) {
-            setCart([...cart, item])
+            setCart([...cart, itemWrapper])
         }
     };
 
@@ -21,7 +21,7 @@ export default function CartProvider({ children, defaultCart = [] }) {//[array d
         //remueve el item por id y actualiza
         console.log('quitas un item', itemId)
         //antes de terminar cada operacion actualizar el estado
-        setCart(cart.filter(item => item.id !== itemId))
+        setCart(cart.filter(iw => iw.item.id !== itemId))
 
     };
     return <CartContext.Provider value={{cart, add, remove}}>
