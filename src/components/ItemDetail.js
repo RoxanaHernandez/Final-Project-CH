@@ -14,7 +14,7 @@ export default function ItemDetail ( {item} ) {
         <p> {item.category}</p><br></br>
         <p> {item.description} </p><br></br>
         <p> ${item.price} </p><br></br>
-        <img src={item.img}/><br></br>
+        <img src={`/images/${item.image}`}/><br></br>
         <ItemCount stock={item.stock} onChange={(valor) => {
             setCantidad(valor)
             
