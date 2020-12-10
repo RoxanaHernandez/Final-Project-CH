@@ -8,10 +8,17 @@ width: '100%',
 height: 'auto'
 }
 
-const fetchItems = () => {
+const fetchItems = (categoryId) => {
   const db = getFirestore();
   const itemCollection = db.collection('equipos');
-  const res = itemCollection.get()
+  let res;
+  if(categoryId) {
+    res = itemCollection.where('categoryId','==', categoryId).get();
+  } else {
+    res = itemCollection.get();
+
+  }
+
   return res.then((querySnapshot) => {
     if (querySnapshot.size === 0) {
       return [];
@@ -25,14 +32,14 @@ const fetchItems = () => {
   })
 };
 
-function ItemListContainer() {
+function ItemListContainer({ categoryId }) {
   const [items, setItems] = useState([])
   useEffect(() => {
-    fetchItems().then((result) => {
+    fetchItems(categoryId).then((result) => {
       console.log(result)
       setItems(result)
     })
-  }, [])
+  }, [categoryId])
 
   return (
     <div className='tiendita'>

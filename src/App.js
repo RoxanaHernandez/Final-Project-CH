@@ -9,7 +9,9 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import Home from './components/Home';
 import CartProvider, { CartContext } from './context/CartContext';
 import Footer from './components/Footer'
-import Cart from './components/Cart';
+import CartContainer from './components/CartContainer';
+
+
 
 function App() {
   return (
@@ -22,8 +24,16 @@ function App() {
          
           <Switch>
             <Route path="/list" exact component={ItemListContainer} />
+            <Route path="/Anales" exact>
+              <ItemListContainer categoryId={1} />              
+            </Route>
+            <Route path="/Vaginales" exact>
+              <ItemListContainer categoryId={2} />  
+              </Route>
             <Route path="/item/:id" component={ItemDetailContainer} />
-            <Route path="/cart" exact component={Cart} />
+            <Route path="/cart" exact >
+              <CartContainer />
+            </Route>
             <Route path="/" exact component={Home} />
           </Switch>
           

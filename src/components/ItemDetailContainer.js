@@ -7,12 +7,7 @@ import { getFirestore } from '../firebase/indexfb';
 
 
 
-//const fetchItem = (id) => new Promise((resolve, reject) => {
- // return setTimeout(() => {
-   // return resolve(item.find((item) => item.id.toString() === id))
-    
-  //}, 2000)
-//})
+
 
 const getItemDetail = (id) => {
   const db = getFirestore();
