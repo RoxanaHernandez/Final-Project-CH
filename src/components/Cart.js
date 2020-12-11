@@ -5,7 +5,7 @@ import React from 'react';
 import { useCartContext } from '../context/CartContext';
 import { Link } from "react-router-dom";
 
-
+import Form from './FormOrderUser';
 
 function Cart({ onOrder }) {
 
@@ -31,22 +31,23 @@ function Cart({ onOrder }) {
             </div>
         ))}
         <div style={{ padding: '10px', width: '200px', marginRight: 'auto', marginLeft: 'auto', marginBottom: '20px' }}> <h3 style={{ color: 'white', fontSize: 25, fontFamily: 'Syne Mono', marginLeft: 50 }}>Total: ${carrito.cart.reduce((acc, iw) => acc + iw.cantidad * iw.item.price, 0)}</h3></div>
-        <button
-            onClick={() => {
-                onOrder({
-                    buyer: {
-                        name: 'ro',
-                        phone: '351',
-                        email: '@'
-                    },
-                    items: carrito.cart,
-                    total: carrito.cart.reduce((acc, iw) => acc + iw.cantidad * iw.item.price, 0),
-                })
-            }}
-            type="button"
-            style={{ color: 'black', fontSize: 25, fontFamily: 'Syne Mono', marginLeft: 50, width: "150px", height: "50px", margin: '10px' }}> <h3>COMPRAR</h3> </button>
-
-    </div>
+        
+    
+    <Form onSubmit={(details) => {
+        onOrder({
+            buyer: {
+                name: `${details.nombre} ${details.apellido}`,
+                phone: '351',
+                email: '@'
+            },
+            items: carrito.cart,
+            total: carrito.cart.reduce((acc, iw) => acc + iw.cantidad * iw.item.price, 0),
+        }).then(order=>{
+            alert(`Tu numero de orden es: ${order.id} Fecha ${order.date}`)
+        })
+    }}/>
+</div>
+    
 }
 
 export default Cart;

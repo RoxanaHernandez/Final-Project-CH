@@ -1,6 +1,7 @@
 
 import * as firebase from 'firebase/app';
 import  'firebase/firestore';
+ 
 
 const db = getFireStore();
 const orders = db.collection ('orders');
@@ -12,10 +13,10 @@ const newOrder = {
 
 }
 
-orders.add(newOrder).then(({id}) => {
-    setOrderId(id);
+orders.add(newOrder).then(({ id }) => {
+        setOrderId(id);
 
-}).catch(err =>{
+    }).catch(err =>{
     setError(err);
 }).finally(()=>{
     setLoading(false)

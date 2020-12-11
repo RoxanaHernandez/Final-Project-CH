@@ -15,9 +15,9 @@ export default function Footer(){
                 <li style={{display:'inline', marginRight:20, fontFamily: 'Syne Mono'}}>INICIO</li>
                 </Link>
 
-                <Link to="/list">
-                <li style={{display:'inline', marginRight:20, fontFamily: 'Syne Mono'}}>CONTACTANOS</li>
-                </Link>
+                
+                <li style={{display:'inline', marginRight:20, fontFamily: 'Syne Mono'}}>Copyright 2020</li>
+                
                 
            
 
