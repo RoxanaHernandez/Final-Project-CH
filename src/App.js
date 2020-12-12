@@ -10,6 +10,7 @@ import Home from './components/Home';
 import CartProvider, { CartContext } from './context/CartContext';
 import Footer from './components/Footer'
 import CartContainer from './components/CartContainer';
+import NoExiste from './components/NoExiste'
 
 
 
@@ -35,6 +36,7 @@ function App() {
               <CartContainer />
             </Route>
             <Route path="/" exact component={Home} />
+            <Route path="*" component={NoExiste} status={404} /> 
           </Switch>
           
           <Footer />

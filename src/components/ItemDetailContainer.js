@@ -41,8 +41,10 @@ return (
   <div className = 'tiendita'>
       {item.id ? (
         <ItemDetail item={item}></ItemDetail>
+         
 
       ): 'loading'}
+      
   </div>
 )
 };
