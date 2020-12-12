@@ -11,7 +11,16 @@ const addOrder = (order) => {
   order.date = firebase.firestore.Timestamp.fromDate(new Date());
   const res = ordersCollection.add(order)
 
-  return res.then(({id}) => id);
+  return res
+    .then((order) => order.get())
+    .then((order) => {
+      const orderData = order.data()
+      return {
+        ...orderData,
+        id: order.id,
+        date: orderData.date.toDate(),
+      };
+    });
 };
 
 function CartContainer({ categoryId }) {

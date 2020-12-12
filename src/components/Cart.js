@@ -3,13 +3,17 @@
 
 import React from 'react';
 import { useCartContext } from '../context/CartContext';
-import { Link } from "react-router-dom";
+import {AlertContext, useAlertContext} from '../context/AlertContext';
+import { Link, useHistory } from "react-router-dom";
 
 import Form from './FormOrderUser';
 
 function Cart({ onOrder }) {
 
     const carrito = useCartContext();
+    const alert = useAlertContext();
+    const history = useHistory();
+
     if (carrito.cart.length === 0) {
         return (
             <div>
@@ -42,9 +46,12 @@ function Cart({ onOrder }) {
             },
             items: carrito.cart,
             total: carrito.cart.reduce((acc, iw) => acc + iw.cantidad * iw.item.price, 0),
-        }).then(order=>{
-            alert(`Tu numero de orden es: ${order.id} Fecha ${order.date}`)
+        }).then(order =>{
+            alert.setOrder(order)
+            history.push('/alert')
         })
+            
+        
     }}/>
 </div>
     

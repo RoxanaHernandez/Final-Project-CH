@@ -1,14 +1,12 @@
 import { Email } from '@material-ui/icons';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
 
 function Form ({ onSubmit }) {
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [remail, setRemail] = useState('');
   const [email, setEmail] = useState('');
-
-  
-
 
   return (
     <div style={{color: 'white',fontSize: 25, fontFamily: 'Syne Mono'}}>

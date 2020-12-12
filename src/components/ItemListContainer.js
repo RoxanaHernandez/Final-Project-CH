@@ -3,10 +3,7 @@ import ItemList from './ItemList'
 
 import { getFirestore } from '../firebase/indexfb';
 
-const stilo = {
-width: '100%',
-height: 'auto'
-}
+
 
 const fetchItems = (categoryId) => {
   const db = getFirestore();

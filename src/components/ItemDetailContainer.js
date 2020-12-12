@@ -15,8 +15,10 @@ const getItemDetail = (id) => {
   const res = itemCollection.doc(id).get()
   return res.then((doc) => {
     const data = doc.data();
-    data.id = doc.id
-    return data
+    if (data) {
+      data.id = doc.id
+      return data
+    }
   })
 };
 
@@ -36,16 +38,16 @@ function ItemDetailContainer(){
 //fetchItem(id).then((result) => {
   //setItem(result)
 //})
-
+if(!item){
+  return <h1 style={{  color: 'white', fontSize: 50, fontFamily: 'Syne Mono', marginLeft: 50 }}>EL ITEM NO EXISTE</h1>
+}
 return (
-  <div className = 'tiendita'>
-      {item.id ? (
-        <ItemDetail item={item}></ItemDetail>
-         
-
-      ): 'loading'}
-      
-  </div>
+  <div >
+  {item.id ? (
+    <ItemDetail item={item}></ItemDetail>
+  ): 'loading'}
+  
+</div>
 )
 };
 
