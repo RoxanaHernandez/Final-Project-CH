@@ -12,6 +12,7 @@ import AlertProvider from './context/AlertContext';
 import Alert from './components/Alert';
 import Footer from './components/Footer'
 import CartContainer from './components/CartContainer';
+import Categories from './components/Categories';
 
 
 
@@ -35,6 +36,9 @@ function App() {
                 <ItemListContainer categoryId={2} />
               </Route>
               <Route path="/item/:id" component={ItemDetailContainer} />
+              <Route path="/category/:categoryId" >
+                <Categories />
+              </Route>
               <Route path="/cart" exact >
                 <CartContainer />
               </Route>

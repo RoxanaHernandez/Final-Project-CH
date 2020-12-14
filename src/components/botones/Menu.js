@@ -9,9 +9,8 @@ import { Link } from 'react-router-dom';
 
 
 const options = [
-  'Anales',
-  'Vaginales',
-  'Peneanos'
+  {label: 'Anales', id:1},
+  {label:'Vaginales', id:2}
 ];
 
 const ITEM_HEIGHT = 48;
@@ -53,9 +52,9 @@ export default function LongMenu() {
         }}
       >
         {options.map((option) => (
-          <Link to={`/${option}`}>
+          <Link to={`/category/${option.id}`}>
             <MenuItem key={option} selected={option === 'Anales'} onClick={handleClose}>
-              {option}
+              {option.label}
             </MenuItem>
           </Link>
         ))}
